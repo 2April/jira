@@ -25,7 +25,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json-server": "json-server __json_server_mock__/db.json --watch --middlewares ./__json_server_mock__/middleware.js"
+    "json-server": "json-server __json_server_mock__/db.json --watch --middlewares ./__json_server_mock__/middleware.js",
+    "prepare": "husky install",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint-staged": "lint-staged"
   },
   "eslintConfig": {
     "extends": [
@@ -48,8 +51,13 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
     "json-server": "^0.17.0",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "npm run lint",
+    "**/*.{js,css,md,ts,tsx}": "prettier --write"
   }
 }
